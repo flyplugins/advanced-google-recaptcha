@@ -176,6 +176,20 @@ class WPCaptcha
                 add_action( 'bp_signup_validate', array('WPCaptcha_Functions', 'process_buddypress_signup_form'));
             }
 
+	        // Handle WP Courseware login
+	        if($options['captcha_show_wpcw_login']){
+		        add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'captcha_fields_print'));
+		        add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'login_scripts_print'));
+		        add_filter( 'wpcw_login_errors', array('WPCaptcha_Functions', 'check_wpcw_login_form'));
+	        }
+
+	        // Handle WP Courseware registration
+	        if($options['captcha_show_wpcw_enroll']){
+		        add_action( 'wpcw_register_form', array('WPCaptcha_Functions', 'captcha_fields_print'));
+		        add_action( 'wpcw_register_form', array('WPCaptcha_Functions', 'login_scripts_print'));
+		        add_filter( 'wpcw_process_registration_errors', array('WPCaptcha_Functions', 'check_wpcw_enroll_form'));
+	        }
+
             add_action('login_head', array('WPCaptcha_Functions', 'login_head' ), 9999);
 
             remove_filter('authenticate', 'wp_authenticate_username_password', 9999, 3);

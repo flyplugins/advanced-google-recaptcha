@@ -130,6 +130,8 @@ class WPCaptcha_Setup extends WPCaptcha
                 $options['captcha_show_woo_checkout'] = $free_options['enable_woo_checkout'];
                 $options['captcha_show_edd_registration'] = $free_options['enable_edd_register'];
                 $options['captcha_show_bp_registration'] = $free_options['enable_bp_register'];
+	            $options['captcha_show_wpcw_login'] = $free_options['enable_wpcw_login'];
+	            $options['captcha_show_wpcw_enroll'] = $free_options['enable_wpcw_enroll'];
 
                 update_option(WPCAPTCHA_OPTIONS_KEY, $options);
                 ///delete_option("agr_options");
