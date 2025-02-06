@@ -3,7 +3,7 @@
   Plugin Name: Advanced Google reCAPTCHA
   Plugin URI: https://getwpcaptcha.com/
   Description: Advanced Google reCAPTCHA will safeguard your WordPress site from spam comments and brute force attacks. With this plugin, you can easily add Google reCAPTCHA to WordPress comment form, login form and other forms.
-  Version: 1.26
+  Version: 1.27
   Author: WebFactory Ltd
   Author URI: https://www.webfactoryltd.com/
   License: GNU General Public License v3.0
@@ -12,7 +12,7 @@
   Tested up to: 6.7
   Requires PHP: 5.2
 
-  Copyright 2023 - 2024  WebFactory Ltd  (email: support@webfactoryltd.com)
+  Copyright 2023 - 2025  WebFactory Ltd  (email: support@webfactoryltd.com)
   Copyright 2021 - 2023  WP Concern
 
   This program is free software; you can redistribute it and/or modify
@@ -175,20 +175,6 @@ class WPCaptcha
                 add_action( 'bp_after_signup_profile_fields', array('WPCaptcha_Functions', 'login_scripts_print'));
                 add_action( 'bp_signup_validate', array('WPCaptcha_Functions', 'process_buddypress_signup_form'));
             }
-
-            // WP Courseware Integration
-            if($options['captcha_show_wpcw_login']){
-                add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'captcha_fields_print'));
-                add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'login_scripts_print'));
-                add_filter( 'wpcw_login_errors', array('WPCaptcha_Functions', 'check_wpcw_login_form'));
-            }
-
-            if($options['captcha_show_wpcw_enroll']){
-                add_action( 'wpcw_register_form', array('WPCaptcha_Functions', 'captcha_fields_print'));
-                add_action( 'wpcw_register_form', array('WPCaptcha_Functions', 'login_scripts_print'));
-                add_filter( 'wpcw_process_registration_errors', array('WPCaptcha_Functions', 'check_wpcw_enroll_form'));
-            }
-            // END WP Courseware Integration
 
             add_action('login_head', array('WPCaptcha_Functions', 'login_head' ), 9999);
 

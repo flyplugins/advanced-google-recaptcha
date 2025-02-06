@@ -3,7 +3,7 @@
 /**
  * WP Captcha
  * https://getwpcaptcha.com/
- * (c) WebFactory Ltd, 2022 - 2023, www.webfactoryltd.com
+ * (c) WebFactory Ltd, 2022 - 2025, www.webfactoryltd.com
  */
 
 class WPCaptcha_Functions extends WPCaptcha
@@ -348,6 +348,10 @@ class WPCaptcha_Functions extends WPCaptcha
 
     static function process_lost_password_form($errors)
     {
+        if( !isset( $_POST['pass1'] ) &&  !isset( $_POST['user_login'] ) ){
+            return $errors;
+        }
+        
         $captcha_check = self::handle_captcha();
         if ($captcha_check !== true) {
             $errors->add('captcha', $captcha_check->get_error_message());
@@ -405,39 +409,6 @@ class WPCaptcha_Functions extends WPCaptcha
             );
         }
     }
-
-    // WP Courseware Integration
-    static function check_wpcw_login_form($validation_error)
-    {
-        $captcha_check = self::handle_captcha();
-        if ($captcha_check !== true) {
-            return $captcha_check->get_error_message();
-        } else {
-            return $validation_error;
-        }
-    }
-
-        static function check_wpcw_enroll_form($validation_error)
-    {
-        if (wp_doing_ajax()) {
-            return $validation_error;
-        }
-
-        $captcha_check = self::handle_captcha();
-
-        if ($captcha_check !== true) {
-            if (isset($validation_error) && is_wp_error($validation_error)) {
-                $validation_error->add('captcha', $captcha_check->get_error_message());
-                return $validation_error;
-            } else {
-                wpcw_add_notice($captcha_check->get_error_message(), 'error');
-                return $validation_error;
-            }
-        }
-
-        return $validation_error;
-    }
-    // END WP Courseware Integration
 
     static function process_comment_form($commentdata)
     {
