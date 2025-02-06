@@ -428,16 +428,6 @@ class WPCaptcha_Functions extends WPCaptcha
 		return $validation_error;
 	}
 
-	static function check_wpcw_login_form($validation_error)
-	{
-		$captcha_check = self::handle_captcha();
-		if ($captcha_check !== true) {
-			return $captcha_check->get_error_message();
-		}else{
-			return $validation_error;
-		}
-	}
-
     static function process_comment_form($commentdata)
     {
         // No need to check for loggedin user.

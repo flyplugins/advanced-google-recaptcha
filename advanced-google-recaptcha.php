@@ -121,8 +121,8 @@ class WPCaptcha
                 add_filter( 'edd_login_fields_after', array('WPCaptcha_Functions', 'captcha_fields'));
                 add_filter( 'edd_login_fields_after', array('WPCaptcha_Functions', 'login_scripts_print'));
                 add_action( 'login_enqueue_scripts', array('WPCaptcha_Functions', 'login_enqueue_scripts' ));
-	            add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'captcha_fields_print'));
-	            add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'login_scripts_print'));
+				add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'captcha_fields_print'));
+				add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'login_scripts_print'));
             }
 
             // Handle registration captcha
