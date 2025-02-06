@@ -120,7 +120,9 @@ class WPCaptcha
                 add_action( 'woocommerce_login_form', array('WPCaptcha_Functions', 'login_scripts_print'));
                 add_filter( 'edd_login_fields_after', array('WPCaptcha_Functions', 'captcha_fields'));
                 add_filter( 'edd_login_fields_after', array('WPCaptcha_Functions', 'login_scripts_print'));
-                add_action('login_enqueue_scripts', array('WPCaptcha_Functions', 'login_enqueue_scripts' ));
+                add_action( 'login_enqueue_scripts', array('WPCaptcha_Functions', 'login_enqueue_scripts' ));
+	            add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'captcha_fields_print'));
+	            add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'login_scripts_print'));
             }
 
             // Handle registration captcha
@@ -176,14 +178,7 @@ class WPCaptcha
                 add_action( 'bp_signup_validate', array('WPCaptcha_Functions', 'process_buddypress_signup_form'));
             }
 
-	        // Handle WP Courseware login
-	        if($options['captcha_show_wpcw_login']){
-		        add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'captcha_fields_print'));
-		        add_action( 'wpcw_login_form', array('WPCaptcha_Functions', 'login_scripts_print'));
-		        add_filter( 'wpcw_login_errors', array('WPCaptcha_Functions', 'check_wpcw_login_form'));
-	        }
-
-	        // Handle WP Courseware registration
+	        // Handle WP Courseware enrollment
 	        if($options['captcha_show_wpcw_enroll']){
 		        add_action( 'wpcw_register_form', array('WPCaptcha_Functions', 'captcha_fields_print'));
 		        add_action( 'wpcw_register_form', array('WPCaptcha_Functions', 'login_scripts_print'));

@@ -433,7 +433,7 @@ class WPCaptcha_Functions extends WPCaptcha
 		$captcha_check = self::handle_captcha();
 		if ($captcha_check !== true) {
 			return $captcha_check->get_error_message();
-		} else {
+		}else{
 			return $validation_error;
 		}
 	}

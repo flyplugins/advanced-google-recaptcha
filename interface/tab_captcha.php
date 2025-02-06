@@ -260,13 +260,6 @@ class WPCaptcha_Tab_Captcha extends WPCaptcha
         echo '</td></tr>';
 
 	    echo '<tr valign="top">
-        <th scope="row"><label for="captcha_show_wpcw_login">WP Courseware Login Form</label></th>
-        <td>';
-	    WPCaptcha_Utility::create_toggle_switch('captcha_show_wpcw_login', array('saved_value' => $options['captcha_show_wpcw_login'], 'option_key' => esc_attr(WPCAPTCHA_OPTIONS_KEY) . '[captcha_show_wpcw_login]'));
-	    echo '<br /><span>Show captcha on WP Courseware registration form</span>';
-	    echo '</td></tr>';
-
-	    echo '<tr valign="top">
         <th scope="row"><label for="captcha_show_wpcw_enroll">WP Courseware Enrollment Form</label></th>
         <td>';
 	    WPCaptcha_Utility::create_toggle_switch('captcha_show_wpcw_enroll', array('saved_value' => $options['captcha_show_wpcw_enroll'], 'option_key' => esc_attr(WPCAPTCHA_OPTIONS_KEY) . '[captcha_show_wpcw_enroll]'));
