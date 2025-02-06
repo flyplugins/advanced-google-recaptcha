@@ -259,6 +259,13 @@ class WPCaptcha_Tab_Captcha extends WPCaptcha
         echo '<br /><span>Show captcha on BuddyPress registration form</span>';
         echo '</td></tr>';
 
+	    echo '<tr valign="top">
+        <th scope="row"><label for="captcha_show_wpcw_enroll">WP Courseware Enrollment Form</label></th>
+        <td>';
+	    WPCaptcha_Utility::create_toggle_switch('captcha_show_wpcw_enroll', array('saved_value' => $options['captcha_show_wpcw_enroll'], 'option_key' => esc_attr(WPCAPTCHA_OPTIONS_KEY) . '[captcha_show_wpcw_enroll]'));
+	    echo '<br /><span>Show captcha on WP Courseware enrollment form</span>';
+	    echo '</td></tr>';
+
         echo '<tr><td></td><td>';
         WPCaptcha_admin::footer_save_button();
         echo '</td></tr>';

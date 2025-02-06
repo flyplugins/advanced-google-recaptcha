@@ -130,6 +130,7 @@ class WPCaptcha_Setup extends WPCaptcha
                 $options['captcha_show_woo_checkout'] = $free_options['enable_woo_checkout'];
                 $options['captcha_show_edd_registration'] = $free_options['enable_edd_register'];
                 $options['captcha_show_bp_registration'] = $free_options['enable_bp_register'];
+	            $options['captcha_show_wpcw_enroll'] = $free_options['enable_wpcw_enroll'];
 
                 update_option(WPCAPTCHA_OPTIONS_KEY, $options);
                 ///delete_option("agr_options");
@@ -209,6 +210,7 @@ class WPCaptcha_Setup extends WPCaptcha
             'captcha_show_woo_checkout'               => 0,
             'captcha_show_edd_registration'           => 0,
             'captcha_show_bp_registration'            => 0,
+            'captcha_show_wpcw_enroll'                => 0,
             'login_url'                               => '',
             'login_redirect_url'                      => '',
             'global_block'                            => 0,
@@ -383,6 +385,10 @@ class WPCaptcha_Setup extends WPCaptcha
         if (!isset($options['captcha_show_bp_registration'])) {
             $options['captcha_show_bp_registration'] = 0;
         }
+
+	    if (!isset($options['captcha_show_wpcw_enroll'])) {
+		    $options['captcha_show_wpcw_enroll'] = 0;
+	    }
 
         if ($old_options['firewall_block_bots'] != $options['firewall_block_bots'] || $old_options['firewall_directory_traversal'] != $options['firewall_directory_traversal']) {
             self::firewall_setup($options);
